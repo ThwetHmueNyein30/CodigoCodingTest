@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto "
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/welcome" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:src="@drawable/clouds" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp">
+
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:contentDescription="@string/app_name"
+                android:id="@+id/back"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:src="@drawable/baseline_close_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_width="match_parent"
+                android:text="@string/login_title"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_width="match_parent"
+                android:text="@string/login_desc"
+                android:textSize="@dimen/paragraph_size" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_width="match_parent"
+                app:cardCornerRadius="@dimen/card_radius">
+
+                <RelativeLayout
+                    android:background="@color/login_button_color"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingVertical="@dimen/text_margin">
+
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/login_facebook"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_alignParentEnd="true"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_width="wrap_content"
+                        app:cardCornerRadius="@dimen/card_radius">
+
+                        <ImageView
+                            android:backgroundTint="@color/white"
+                            android:layout_height="25dp"
+                            android:layout_width="25dp"
+                            android:src="@drawable/fb" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_width="match_parent"
+                app:cardCornerRadius="@dimen/card_radius">
+
+                <RelativeLayout
+                    android:background="@color/login_button_color"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingVertical="@dimen/text_margin">
+
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/login_email"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/accountCreate"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:cardCornerRadius="@dimen/card_radius">
+
+                <RelativeLayout
+                    android:background="@drawable/create_account_gradient"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingVertical="@dimen/text_margin">
+
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/create_account"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout></layout>

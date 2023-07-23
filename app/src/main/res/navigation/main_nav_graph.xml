@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/nav_intro">
+
+    <fragment
+        android:id="@+id/nav_intro"
+        android:name="com.codigo.codetest.TaskIntroFragment"/>
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.codigo.codetest.login.LoginFragment"/>
+    <fragment
+        android:id="@+id/nav_account_create"
+        android:name="com.codigo.codetest.account_create.AccountCreateFragment"/>
+    <fragment
+        android:id="@+id/nav_account_create_success"
+        android:name="com.codigo.codetest.account_create.AccountCreateSuccessFragment"/>
+    <fragment
+        android:id="@+id/nav_hotel"
+        android:name="com.codigo.codetest.hotel.HotelFragment"/>
+
+    <fragment
+        android:id="@+id/nav_movie"
+        android:name="com.codigo.codetest.code.presentation.MovieFragment"
+        android:label="Movie Fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.codigo.codetest.code.presentation.MovieDetailFragment"
+        android:label="Movie Detail Fragment">
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_movieFragment_to_movieDetailFragment"
+        app:destination="@id/movieDetailFragment" />
+
+</navigation>
