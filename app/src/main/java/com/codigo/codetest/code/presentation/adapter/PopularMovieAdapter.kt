@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codigo.codetest.code.data.source.movie.Movie
 import com.codigo.codetest.databinding.PopularMovieListItemBinding
 
-class PopularMovieAdapter(val onClick: (Movie) -> Unit) : ListAdapter<Movie, RecyclerView.ViewHolder>(
-    MovieDiffCallBack()
-) {
+class PopularMovieAdapter(val onClick: (Movie) -> Unit, val onFavoriteClick: (Movie) -> Unit) :
+    ListAdapter<Movie, RecyclerView.ViewHolder>(
+        MovieDiffCallBack()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
@@ -25,9 +26,13 @@ class PopularMovieAdapter(val onClick: (Movie) -> Unit) : ListAdapter<Movie, Rec
     inner class MovieViewHolder(private val binding: PopularMovieListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
-          binding.movie= movie
+            binding.movie = movie
+
             binding.linearMovie.setOnClickListener {
                 onClick(movie)
+            }
+            binding.imgFavorite.setOnClickListener {
+                onFavoriteClick(movie)
             }
         }
     }

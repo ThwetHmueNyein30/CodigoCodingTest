@@ -1,10 +1,12 @@
 package com.codigo.codetest.code.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.codigo.codetest.code.data.source.movie.Movie
@@ -15,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieDetailFragment : Fragment() {
     private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var movie: Movie
+    private val viewModel: MovieViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,9 @@ class MovieDetailFragment : Fragment() {
         binding.movie= movie
         binding.backBtnDetail.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.imgFavorite.setOnClickListener {
+            viewModel.onTapFavorite(movie)
         }
     }
 

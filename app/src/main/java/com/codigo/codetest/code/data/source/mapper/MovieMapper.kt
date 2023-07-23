@@ -4,13 +4,12 @@ package com.codigo.codetest.code.data.source.mapper
 import com.codigo.codetest.code.data.source.movie.Movie
 import com.codigo.codetest.code.util.reformatDate
 import com.codigo.codetest.code.data.source.local.MovieEntity
-import com.thn.codigocodetest.data.source.remote.list.MovieDto
+import com.codigo.codetest.code.data.source.remote.list.MovieDto
 
 
-fun MovieDto.toMovieEntity(page:Int,type:String): MovieEntity {
+fun MovieDto.toMovieEntity(type:String): MovieEntity {
     return MovieEntity(
         id = this.id,
-        page=page,
         popularity = this.popularity,
         voteAverage = this.vote_average,
         voteCount = this.vote_count,
@@ -28,7 +27,6 @@ fun MovieDto.toMovieEntity(page:Int,type:String): MovieEntity {
 fun MovieEntity.toMovie() : Movie {
     return Movie(
         id = this.id,
-        page= this.page,
         popularity = this.popularity,
         voteAverage = this.voteAverage,
         voteCount = this.voteCount,

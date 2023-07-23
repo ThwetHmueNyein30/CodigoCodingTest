@@ -8,6 +8,7 @@
         <variable
             name="movie"
             type="com.codigo.codetest.code.data.source.movie.Movie" />
+
     </data>
 
     <LinearLayout
@@ -43,6 +44,7 @@
                     app:imageUrl="@{movie.image}"
                     tools:src="@tools:sample/backgrounds/scenic" />
                 <ImageView
+                    android:id="@+id/img_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"

@@ -1,4 +1,4 @@
-package com.thn.codigocodetest.data.source.remote.list
+package com.codigo.codetest.code.data.source.remote.list
 
 import com.squareup.moshi.Json
 

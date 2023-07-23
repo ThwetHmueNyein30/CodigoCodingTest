@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codigo.codetest.code.data.source.movie.Movie
 import com.codigo.codetest.databinding.UpcomingMovieListItemBinding
 
-class UpComingMovieAdapter(val onClick: (Movie) -> Unit) :
+class UpComingMovieAdapter(val onClick: (Movie) -> Unit, val onFavoriteClick:(Movie)->Unit) :
     ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,6 +33,9 @@ class UpComingMovieAdapter(val onClick: (Movie) -> Unit) :
             binding.movie = movie
             binding.movieCardView.setOnClickListener {
                 onClick(movie)
+            }
+            binding.imgFavorite.setOnClickListener {
+                onFavoriteClick(movie)
             }
         }
     }

@@ -13,21 +13,3 @@ sealed interface Result<out T> {
     object Loading : Result<Nothing>
 }
 
-
-
-fun <T> Flow<ApiResponse<T>>.asFlowResult(): Flow<Result<T>> {
-    return this.map { response ->
-        when (response) {
-            is ApiSuccessResponse -> Result.Success(response.body)
-            is ApiErrorResponse -> Result.Error(response.errorMessage)
-        }
-    }
-        .onStart { emit(Result.Loading) }
-        .catch { emit(Result.Error(it.message)) }
-}
-
-fun <T> Flow<T>.asResult(): Flow<Result<T>> {
-    return map { Result.Success(it) }
-        .onStart { Result.Loading }
-        .catch { Result.Error(it.message) }
-}

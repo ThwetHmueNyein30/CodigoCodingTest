@@ -21,31 +21,29 @@ class MovieRepoImpl @Inject constructor(
     private val dao: MovieDao,
     @Dispatcher(MovieDispatcher.IO) private val ioDispatcher: CoroutineDispatcher,
 ) : MovieRepo {
-    override fun getPopularMovies(page: Int): Flow<Result<List<Movie>>> {
+    override fun getPopularMovies(): Flow<Result<List<Movie>>> {
         return localRemoteBoundResult(
             fetchFromLocal = {
-                dao.getAllMovies(page = page, type = MovieType.POPULAR.toString())
+                dao.getAllMovies(type = MovieType.POPULAR.toString())
                     .map { movieEntities -> movieEntities.map { it.toMovie() } }
             },
             shouldMakeNetworkRequest = { dbData ->
                 dbData.isNullOrEmpty()
             },
             makeNetworkRequest = {
-                api.getPopularMovies(
-                    page = page,
-                )
+                api.getPopularMovies()
             },
             saveResponseData = { movies ->
-                dao.upsertMovie(movies.results.map { it.toMovieEntity(page = page,type= MovieType.POPULAR.name) })
+                dao.upsertMovie(movies.results.map { it.toMovieEntity(type= MovieType.POPULAR.name) })
 
             },
         ).flowOn(ioDispatcher)
     }
 
-    override fun getUpcomingMovies(page: Int): Flow<Result<List<Movie>>> {
+    override fun getUpcomingMovies(): Flow<Result<List<Movie>>> {
         return localRemoteBoundResult(
             fetchFromLocal = {
-                dao.getAllMovies(page = page, type = MovieType.UPCOMING.toString())
+                dao.getAllMovies(type = MovieType.UPCOMING.toString())
                     .map { movieEntities -> movieEntities.map { it.toMovie() } }
             },
             shouldMakeNetworkRequest = { dbData ->
@@ -53,16 +51,16 @@ class MovieRepoImpl @Inject constructor(
             },
             makeNetworkRequest = {
                 api.getUpcomingMovies(
-                    page = page,
+
                 )
             },
             saveResponseData = { movies ->
-                dao.upsertMovie(movies.results.map { it.toMovieEntity(page = page, type= MovieType.UPCOMING.toString()) })
+                dao.upsertMovie(movies.results.map { it.toMovieEntity( type= MovieType.UPCOMING.toString()) })
             },
         ).flowOn(ioDispatcher)
     }
 
-    override fun onSaveFavoriteMovie(id: Int, isFavorite: Boolean) {
+    override suspend fun onSaveFavoriteMovie(id: Int, isFavorite: Boolean) {
         dao.setFavouriteMovie(id,isFavorite)
     }
 

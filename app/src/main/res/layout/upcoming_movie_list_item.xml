@@ -41,6 +41,7 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <ImageView
+                    android:id="@+id/img_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"

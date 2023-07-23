@@ -91,22 +91,40 @@
                 android:paddingStart="15dp"
                 android:paddingTop="6dp"
                 android:paddingEnd="15dp"
-
                 android:paddingBottom="6dp">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvTitle_MovieDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:ellipsize="marquee"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="@{movie.title}"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/txt_size_ex_ex_ex_large"
-                    android:textStyle="bold"
-                    tools:text="Avatar" />
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:gravity="center">
+                   <com.google.android.material.textview.MaterialTextView
+                       android:id="@+id/tvTitle_MovieDetail"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_horizontal"
+                       android:ellipsize="marquee"
+                       android:maxLines="1"
+                       android:singleLine="true"
+                       android:text="@{movie.title}"
+                       android:textColor="@color/colorPrimary"
+                       android:textSize="@dimen/txt_size_ex_ex_ex_large"
+                       android:textStyle="bold"
+                       tools:text="Avatar" />
+
+                   <ImageView
+                       android:id="@+id/img_favorite"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:layout_marginStart="8dp"
+                       android:background="?attr/selectableItemBackgroundBorderless"
+                       android:clickable="true"
+                       android:focusable="true"
+                       android:padding="4dp"
+                       android:src="@{movie.isFavorite ? @drawable/ic_rating : @drawable/ic_rating_outlined}"
+                       app:tint="@color/color_favorite" />
+               </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"

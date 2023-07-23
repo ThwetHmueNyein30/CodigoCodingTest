@@ -59,17 +59,19 @@ class MovieFragment : Fragment() {
                                 rvUpcomingMovies.setVisible(false)
                                 upcomingProgressBar.setVisible(true)
                             }
+
                             is MovieUiState.Success -> {
                                 tvUpcomingError.setVisible(false)
                                 rvUpcomingMovies.setVisible(true)
                                 upcomingProgressBar.setVisible(false)
                                 upComingMovieAdapter.submitList(uiState.data)
                             }
+
                             is MovieUiState.Error -> {
                                 tvUpcomingError.setVisible(true)
                                 rvUpcomingMovies.setVisible(false)
                                 upcomingProgressBar.setVisible(false)
-                                tvUpcomingError.text= uiState.error
+                                tvUpcomingError.text = uiState.error
                             }
                         }
 
@@ -91,17 +93,19 @@ class MovieFragment : Fragment() {
                                 rvPopularMovies.setVisible(false)
                                 popularProgressBar.setVisible(true)
                             }
+
                             is MovieUiState.Success -> {
                                 tvPopularError.setVisible(false)
                                 rvPopularMovies.setVisible(true)
                                 popularProgressBar.setVisible(false)
                                 popularMovieAdapter.submitList(uiState.data)
                             }
+
                             is MovieUiState.Error -> {
                                 tvPopularError.setVisible(true)
                                 rvPopularMovies.setVisible(false)
                                 popularProgressBar.setVisible(false)
-                                tvUpcomingError.text= uiState.error
+                                tvUpcomingError.text = uiState.error
                             }
                         }
 
@@ -116,8 +120,10 @@ class MovieFragment : Fragment() {
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
-        popularMovieAdapter = PopularMovieAdapter(onClick = { navigateToDetail(it) })
-        upComingMovieAdapter = UpComingMovieAdapter(onClick = { navigateToDetail(it) })
+        popularMovieAdapter = PopularMovieAdapter(onClick = { navigateToDetail(it) },
+            onFavoriteClick = { viewModel.onTapFavorite(it) })
+        upComingMovieAdapter = UpComingMovieAdapter(onClick = { navigateToDetail(it) },
+            onFavoriteClick = { viewModel.onTapFavorite(it) })
         binding.rvPopularMovies.adapter = popularMovieAdapter
         binding.rvPopularMovies.layoutManager = LinearLayoutManager(context)
         binding.rvPopularMovies.layoutManager = LinearLayoutManager(
@@ -131,7 +137,6 @@ class MovieFragment : Fragment() {
             context,
             LinearLayoutManager.HORIZONTAL, false
         )
-
 
     }
 

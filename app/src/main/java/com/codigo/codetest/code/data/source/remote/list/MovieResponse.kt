@@ -1,7 +1,6 @@
 package com.codigo.codetest.code.data.source.remote.list
 
 import com.squareup.moshi.Json
-import com.thn.codigocodetest.data.source.remote.list.MovieDto
 
 data class MovieResponse (
     @field:Json(name = "page") val page: Int,

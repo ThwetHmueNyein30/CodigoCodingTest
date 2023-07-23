@@ -13,10 +13,10 @@ interface MovieDao {
     suspend fun upsertMovie(entities: List<MovieEntity>)
 
     @Query("UPDATE movie SET isFavorite = :isFavourite WHERE id = :movieId")
-    fun setFavouriteMovie(movieId : Int , isFavourite : Boolean)
+    suspend fun setFavouriteMovie(movieId : Int , isFavourite : Boolean)
 
-    @Query(value = "SELECT * FROM movie WHERE page = :page AND type=:type ")
-    fun getAllMovies(page: Int, type: String): Flow<List<MovieEntity>>
+    @Query(value = "SELECT * FROM movie WHERE type=:type ")
+    fun getAllMovies(type: String): Flow<List<MovieEntity>>
 
     @Query("SELECT * FROM movie WHERE id=:id ORDER BY id")
     fun getMovieDetail(id: String): Flow<MovieEntity>

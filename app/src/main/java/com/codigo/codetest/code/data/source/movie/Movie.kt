@@ -2,7 +2,6 @@ package com.codigo.codetest.code.data.source.movie
 
 data class Movie(
     val id: Int,
-    val page:Int,
     val popularity: Double,
     val voteAverage: Double,
     val voteCount: Int,

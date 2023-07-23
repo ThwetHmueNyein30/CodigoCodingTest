@@ -86,8 +86,6 @@ dependencies {
     kapt("android.arch.persistence.room:compiler:1.1.1")
     kapt("org.xerial:sqlite-jdbc:3.36.0")
 
-    implementation ("androidx.paging:paging-runtime:3.1.1")
-    implementation ("androidx.paging:paging-common-ktx:3.1.1")
 
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation ("com.github.akshaaatt:Sliding-Carousel:1.0.4")
